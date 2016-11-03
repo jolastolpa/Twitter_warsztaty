@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST'){
                $_SESSION['dodanoTweet']="Dodano Tweeta";    
                echo $_SESSION['dodanoTweet'];
                header('location:glownapo.php'); 
-               //unset $_SESSION['dodanoTweet'];
+               unset $_SESSION['dodanoTweet'];
             } 
               else{ 
                   echo"Blad podczas dodawania."; 

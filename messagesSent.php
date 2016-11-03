@@ -33,14 +33,18 @@ if(isset($_SESSION['id'])) {
            $id=$mess->getId(); 
            $messId=$id;
            $tresc=$mess->getText(); 
+           $text=  substr($tresc, 0, 30);
            echo "<br>";
-           echo $mess->getCreationDate(); 
+           echo "Data wysłania: ".$mess->getCreationDate(); 
            echo "<br>"; 
-           echo $mess->getSenderUsername(); 
+           echo "Do: ".$mess->getUsername(); 
            echo "<br>"; 
-           echo "<a href=messagePage.php?messId=$id'>substr($tresc,0,30);</a>";
+           echo "<a href=messagePage.php?messId=$id'>$text</a>";
            echo "<br>"; 
     
-      }
+      } 
+        
+            echo $conn->error;
+        
  
 

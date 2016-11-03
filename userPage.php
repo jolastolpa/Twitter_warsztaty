@@ -50,7 +50,8 @@ if(isset($_SESSION['id'])) {
              
                     } 
                         else{ 
-                          echo"Blad podczas wysyłania."; 
+                          echo"Blad podczas wysyłania.";  
+                         echo $conn->error;
                         }    
             }
             

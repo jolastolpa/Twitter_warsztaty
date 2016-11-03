@@ -1,6 +1,6 @@
 <?php
 session_start(); 
-require_once 'classes/Tweet.php'; 
+
 require_once 'classes/Users.php'; 
 require_once 'classes/Message.php';  
 require_once 'config.php'; 
@@ -24,33 +24,20 @@ if(isset($_SESSION['id'])) {  // wczytywanie uzytkownika
            $id=($_GET['messId']) ;
      
         $message=Message::loadMessageById($conn,$id) ;   
-        
-        $RecipientUserId=$message->getRecipientUserId();  
-        
-            if($RecipientUserId=$userId){  // Jesli zalogowany uzytkownik jest odbiorca wiadomosci
-                $message->saveToDB($conn); // to wczytaj do bazy wiadomosc jako przeczytaną
+        //echo $conn->error;
+      
                
                 echo "Data wysłania:";
                 echo $message->getCreationDate(); 
                 echo "<br>";  
-                echo "Nadawca:";
-                echo $message->getSenderUsername(); 
-                echo "<br>";   
                 echo "Treść:";
                 echo $message->getText();  
-                
-            }   
-                else{  
-                    echo "Data wysłania:";
-                    echo $message->getCreationDate(); 
-                    echo "<br>";  
-                    echo "Nadawca:";
-                    echo $message->getRecipientUsername(); 
-                    echo "<br>";   
-                    echo "Treść:";
-                    echo $message->getText();  
-                 
-                }
-                    
-        }
+        }    
+        
+            $RecipientUserId=$message->getRecipientUserId();  
+        
+            if($RecipientUserId=$userId) {  // Jesli zalogowany uzytkownik jest odbiorca wiadomosci
+               $message->saveToDB($conn); // to wczytaj do bazy wiadomosc jako przeczytaną
+            } else { echo "neiene"; }
     }
+    
