@@ -41,7 +41,7 @@ if(isset($_SESSION['id'])) {
                 $newMessage->setCreationDate($creationDate);  
                 $newMessage->setRecipientUserId($recipientUserId);   
                 $newMessage->setSenderUserId($senderUserId); 
-                //$newMessage->setRead($NewRead);
+               
                 $newMessage->saveToDB($conn);
             
             

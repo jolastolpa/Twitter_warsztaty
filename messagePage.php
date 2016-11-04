@@ -15,16 +15,24 @@ if(isset($_SESSION['id'])) {  // wczytywanie uzytkownika
   $userName=$logUser->getUsername();  
   $userId=$logUser->getId(); 
 } 
+?> 
 
-
-
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+<meta charset="UTF-8">
+<title>Strona uzytkownika</title>
+</head>
+<body>  
+ 
+<?php 
 // jesli przesłano id wiadomości to wczytaj 
     if ($_SERVER['REQUEST_METHOD']=='GET'){ 
         if(isset($_GET['messId'])) { 
            $id=($_GET['messId']) ;
      
         $message=Message::loadMessageById($conn,$id) ;   
-        //echo $conn->error;
+        echo $conn->error;
       
                
                 echo "Data wysłania:";

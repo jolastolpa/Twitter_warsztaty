@@ -76,15 +76,15 @@
                 return true;
             } 
         }   
-           else{ 
-             $sql="UPDATE Message SET ifRead=1 WHERE id=$this->id" ; 
-             $result=$conn->query($sql); 
-             if($result==TRUE) {
+             else{ 
+               $sql="UPDATE Message SET ifRead=1 WHERE id=$this->id" ; 
+               $result=$conn->query($sql); 
+               if($result==TRUE) {
                  RETURN TRUE;
-             }
+               }
            
            RETURN FALSE;
-    }
+             }
     }   
   
     
@@ -118,7 +118,6 @@
     
         if($result == true && $result->num_rows != 0){ 
           foreach($result as $row){
-              $row = $result->fetch_assoc();
               $loadedMessage = new Message();
               $loadedMessage->id = $row['id'];
               $loadedMessage->ifRead = $row['ifRead']; 
@@ -145,7 +144,6 @@
         
         if($result == true && $result->num_rows != 0){ 
           foreach($result as $row){
-            $row = $result->fetch_assoc();
             $loadedMessage = new Message();
             $loadedMessage->id = $row['id'];
             $loadedMessage->ifRead = $row['ifRead']; 

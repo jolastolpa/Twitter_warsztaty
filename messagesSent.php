@@ -39,7 +39,7 @@ if(isset($_SESSION['id'])) {
            echo "<br>"; 
            echo "Do: ".$mess->getUsername(); 
            echo "<br>"; 
-           echo "<a href=messagePage.php?messId=$id'>$text</a>";
+           echo "<a href='messagePage.php?messId=$id'>$text</a>";
            echo "<br>"; 
     
       } 

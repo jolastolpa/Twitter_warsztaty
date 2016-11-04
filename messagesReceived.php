@@ -38,7 +38,7 @@ if(isset($_SESSION['id'])) {
            echo "<br>"; 
            echo "Od: ".$mess->getUsername(); 
            echo "<br>"; 
-           echo "<a href=messagePage.php?messId=$id'>$text</a>";
+           echo "<a href='messagePage.php?messId=$id'>$text</a>";
            echo "<br>"; 
     
       } 
