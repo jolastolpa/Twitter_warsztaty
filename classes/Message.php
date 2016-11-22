@@ -35,9 +35,8 @@
         $this->creationDate = $NewCreationDate;
     } 
     public function setIfRead($NewIfRead) { 
-        $this->ifRead=$NewIfRead;
+       $this->ifRead=$NewIfRead;
 
-    
     }
 
     public function getId() {
@@ -63,29 +62,32 @@
     } 
      public function getIfRead() {
         return $this->ifRead ;
-    } 
+    }  
+    
+    
+    
+    
 
     public function saveToDB(mysqli $conn) {
         if ($this->id == -1) {
-        //Saving new user to DB
-        $sql = "INSERT INTO Message(senderUserId,recipientUserId, text,creationDate,ifRead) "
-               ."VALUES ('$this->senderUserId','$this->recipientUserId', '$this->text', '$this->creationDate','$this->ifRead')";
+            $sql = "INSERT INTO Message (senderUserId, recipientUserId, ifRead, text, creationDate)
+            VALUES ('$this->senderUserId','$this->recipientUserId', $this->ifRead, '$this->text', '$this->creationDate')";
+            
             $result = $conn->query($sql);
             if ($result == true) {
                 $this->id = $conn->insert_id;
                 return true;
             } 
-        }   
-             else{ 
-               $sql="UPDATE Message SET ifRead=1 WHERE id=$this->id" ; 
-               $result=$conn->query($sql); 
-               if($result==TRUE) {
-                 RETURN TRUE;
-               }
-           
-           RETURN FALSE;
-             }
-    }   
+        } else {
+            $sql = "UPDATE Message SET ifRead = 1
+                    WHERE id=$this->id";
+            $result = $conn->query($sql);
+            if ($result == true) {
+                return true;
+            }
+          }
+        return false;
+    }
   
     
   static public function loadMessageById(mysqli $conn, $id){
